@@ -23,10 +23,13 @@ def main():
     data_path_test = "data/test/"
     img_size = 128
 
-    val_data = LIDC_CROPS(dataset_location=data_path_test)
-    torch.save(val_data.images, "data/pt_files/test/images.pt")
-    torch.save(val_data.labels, "data/pt_files/test/labels.pt")
-    print(val_data[0][0].shape, val_data[0][1].shape)
+    train_data = LIDC_CROPS(dataset_location=data_path_train, img_size=128)
+    test_data = LIDC_CROPS(dataset_location=data_path_test, img_size=128)
+    torch.save(test_data.images, "data/pt_files/train/images.pt")
+    torch.save(test_data.labels, "data/pt_files/train/labels.pt")
+    torch.save(test_data.images, "data/pt_files/test/images.pt")
+    torch.save(test_data.labels, "data/pt_files/test/labels.pt")
+    print(test_data[0][0].shape, test_data[0][1].shape)
 
 
 def main2():
@@ -34,8 +37,9 @@ def main2():
     data_path_test = "data/pt_files/test/"
     img_size = 128
 
-    val_data = LIDC_CROPS(dataset_location=data_path_test, folder_type=False)
-    print(val_data[0][0].shape, val_data[0][1].shape)
+    train_data = LIDC_CROPS(dataset_location=data_path_train, folder_type=False)
+    test_data = LIDC_CROPS(dataset_location=data_path_test, folder_type=False)
+    print(test_data[0][0].shape, test_data[0][1].shape)
 
 
 if __name__ == "__main__":
