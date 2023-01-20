@@ -51,8 +51,6 @@ class LIDC_IDRI(Dataset):
         if self.transform is not None:
             image = self.transform(image)
 
-        series_uid = self.series_uid[index]
-
         # Convert image and label to torch tensors
         image = torch.from_numpy(image)
         label = torch.from_numpy(label)
@@ -61,7 +59,7 @@ class LIDC_IDRI(Dataset):
         image = image.type(torch.FloatTensor)
         label = label.type(torch.FloatTensor)
 
-        return image, label, series_uid
+        return image, label
 
     # Override to give PyTorch size of dataset
     def __len__(self):

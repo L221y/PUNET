@@ -22,12 +22,15 @@ else:
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print("device is %s" %(device))
-dataset = LIDC_CROPS(dataset_location = 'lidc_crops_train/train')
-dataset_test=LIDC_CROPS(dataset_location='lidc_crops_test/test')
+data_path_train = "data/train/"
+data_path_test = "data/test/"
+img_size = 128
+dataset = LIDC_CROPS(dataset_location=data_path_train)
+dataset_test = LIDC_CROPS(dataset_location=data_path_test)
 dataset_size = len(dataset)
-dataset_test_size=len(dataset_test)
+dataset_test_size = len(dataset_test)
 indices_train = list(range(dataset_size))
-indices_test=list(range(dataset_test_size))
+indices_test = list(range(dataset_test_size))
 #indices = list(range(dataset_size))
 split = int(np.floor(0.1 * dataset_size))
 #np.random.shuffle(indices)
